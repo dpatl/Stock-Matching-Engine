@@ -1,0 +1,9 @@
+falcon==1.4.1
+gunicorn==19.9.0
+pandas==0.23.4
+py==1.7.0
+pytest==4.0.1
+python-dateutil==2.7.5
+python-mimeparse==1.6.0
+pytz==2018.7
+six==1.11.0
