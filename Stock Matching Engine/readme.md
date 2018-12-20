@@ -1,48 +1,11 @@
-# Schonfeld Coding Test
-This test is meant to assess your thinking and problem solving skills. You will be building a small web app using docker and python and some libraries that you likely have not used before. Feel free to use google to gain a better understanding of the tooling but please do not have others help you with the project.
-
-Before you submit the project, please test it inside the docker container and make sure it works.
-
-## Setup
-1) Install and setup docker (https://docs.docker.com/install/)
-2) **Optional:** If you would like to develop locally rather than use the docker container for development you will need to setup a python 3.6 environment (https://www.python.org/downloads/release/python-360/).
-3) **Optional:** If you would like to use an IDE for python we recommend pycharm (https://www.jetbrains.com/pycharm/download/) 
-4) **Optional:** If you would like to use a tool other than cURL for testing your API we recommend Postman (https://www.getpostman.com/apps) 
-
-## Hello World Health Check
-Included with this readme are a few base files to help you get started:
- - Dockerfile - This will build a docker image to run your service
- - app.py - This is the entry point for your service and what will drive route configuration
- - health_check.py - A simple health check resource to make sure the service is running as expected
- - requirements.txt - Any dependencies should go in here, line 5 of the Dockerfile will install them for you.
-   - falcon is a simple WSGI app framework that handles the boiler plate WSGI requirements (https://falcon.readthedocs.io/en/stable/)
-   - gunicorn is the wsgi server that will serve up the WSGI app (https://gunicorn.org/)
-
-From this project directory run: `docker build .`
-
-The last line should output something like: "Successfully build <image_id>". If you run `docker images` you should see that id in the Image ID column
-
-Once you have an image_id you can run `docker run -d -p 8080:8080 <image_id>`. If the container starts up successfully you should be able to go to 127.0.0.1:8080/health
-
-#### Questions:
-1) What are the -d and -p flags passed into the `docker run` command? 
-2) In the /health endpoint there is a hostname attribute. What does that hostname represent?
-
-#### Answers:
-1) The -d flag causes containers to be run in detached mode in the background and the -p flag publishes a container's port to a network port.
-2) The hostname attribute represents the container ID of the container that was published.
 
 
 ## Matching Engine
-Now that you have a working health check, it's time to build on top of that.
 
-**NOTE:** Be sure to use the correct HTTP verbs for each endpoint
-**NOTE:** Be sure to also write tests around the application. Feel free to use any framework you're comfortable with.
-
-**TL;DR** A matching engine is a tool used in trading that matches people that want to buy stocks with people that want to sell them. More specifically, it matches buy orders with sell orders; this is called filling an order.
+A matching engine is a tool used in trading that matches people that want to buy stocks with people that want to sell them. More specifically, it matches buy orders with sell orders; this is called filling an order.
 Here is a link if you want more information: https://en.wikipedia.org/wiki/Order_matching_system
 
-1) Create a new endpoint that takes in "orders" (/orders) and store it in memory. Here is an example data model:
+1) Creates a new endpoint that takes in "orders" (/orders) and store it in memory. Here is an example data model:
     ```json
     {
         "data":
@@ -70,7 +33,7 @@ Here is a link if you want more information: https://en.wikipedia.org/wiki/Order
     }
     ```
    
-2) Create an endpoint to view a given trader's current orders and statuses (/orders/<trader_id>). The data model for that should look something like this:
+2) Creates an endpoint to view a given trader's current orders and statuses (/orders/<trader_id>). The data model for that should look something like this:
     ```json
     {
         "data":
@@ -100,7 +63,7 @@ Here is a link if you want more information: https://en.wikipedia.org/wiki/Order
     }
     ```
     
-3) Write matching logic to match buy and sell orders. Here is some sample input/output:
+3) Matching logic to match buy and sell orders. Here is some sample input/output:
 
     Trader 1 sends in an order like this:
     ```json
